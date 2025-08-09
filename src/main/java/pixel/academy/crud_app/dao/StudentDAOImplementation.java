@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class StudentDAOImplementation implements StudentDAO {
 
-    //Camp pentru EntityManager(Vva fi utilizat pentru interactiunea cu baza de date)
+    //Camp pentru EntityManager (Va fi utilizat pentru interactiunea cu baza de date)
     private EntityManager entityManager;
 
     //Injectare EntityManager prin constructor (practica recomandata dpentru testabilitate si modularitate)
@@ -39,6 +39,12 @@ public class StudentDAOImplementation implements StudentDAO {
 
         //returnam querry results
         return theQuery.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void update(Student theStudent) {
+        entityManager.merge(theStudent);
     }
 
 }
